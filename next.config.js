@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Yahoo Finance uses external HTTPS endpoints — no special config needed
+  // yahoo-finance2 ships Deno/test files that break webpack bundling.
+  // Externalize it so Next.js loads it at runtime instead.
+  experimental: {
+    serverComponentsExternalPackages: ["yahoo-finance2", "@anthropic-ai/sdk"],
+  },
 };
 
 module.exports = nextConfig;

@@ -6,27 +6,16 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 function fmt(n: number | null | undefined, dp = 2) {
   if (n === null || n === undefined || Number.isNaN(n)) return "—";
-  return n.toLocaleString("en-IN", {
-    minimumFractionDigits: dp,
-    maximumFractionDigits: dp,
-  });
+  return n.toLocaleString("en-IN", { minimumFractionDigits: dp, maximumFractionDigits: dp });
 }
 
 export default function QuoteTile({
-  symbol,
-  label,
-  dp = 2,
-  prefix = "",
-}: {
-  symbol: string;
-  label: string;
-  dp?: number;
-  prefix?: string;
-}) {
+  symbol, label, dp = 2, prefix = "",
+}: { symbol: string; label: string; dp?: number; prefix?: string }) {
   const { data, error } = useSWR(
     `/api/quote?symbol=${encodeURIComponent(symbol)}`,
     fetcher,
-    { refreshInterval: 30000 } // refresh every 30s
+    { refreshInterval: 30000 }
   );
 
   if (error || data?.error) {
@@ -38,13 +27,12 @@ export default function QuoteTile({
       </div>
     );
   }
-
   if (!data) {
     return (
       <div className="tile">
         <div className="tile-label">{label}</div>
-        <div className="tile-price skel" style={{ height: 28, width: "70%" }}>&nbsp;</div>
-        <div className="tile-change skel" style={{ height: 12, width: "50%" }}>&nbsp;</div>
+        <div className="tile-price skel" style={{ height: 26, width: "70%" }}>&nbsp;</div>
+        <div className="tile-change skel" style={{ height: 11, width: "50%" }}>&nbsp;</div>
       </div>
     );
   }

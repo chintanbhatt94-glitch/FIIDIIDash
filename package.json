@@ -1,11 +1,27 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  // yahoo-finance2 ships Deno test files that webpack tries to bundle.
-  // Mark it as an external package so Next.js loads it at runtime instead.
-  experimental: {
-    serverComponentsExternalPackages: ["yahoo-finance2"],
+{
+  "name": "markets-dashboard-v2",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-};
-
-module.exports = nextConfig;
+  "dependencies": {
+    "next": "14.2.33",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "yahoo-finance2": "^2.11.3",
+    "recharts": "^2.12.7",
+    "date-fns": "^3.6.0",
+    "swr": "^2.2.5",
+    "@anthropic-ai/sdk": "^0.27.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.10",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.5.3"
+  }
+}

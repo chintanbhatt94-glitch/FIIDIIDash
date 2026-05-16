@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "India Markets Terminal",
-  description: "Institutional-grade market dashboard for Indian capital markets",
+  description: "Institutional market intelligence dashboard for Indian capital markets",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
